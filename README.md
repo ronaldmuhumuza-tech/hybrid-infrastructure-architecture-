@@ -8,7 +8,7 @@ The focus is on design thinking, security principles, operational resilience, an
 
 ## Portfolio Notes
 
-- [Why Hybrid Architecture Matters in Mission-Critical Environments](./why-hybrid-architecture-matters.md)
+- [Why Hybrid Architecture Matters in Mission-Critical Environments](./docs/hybrid-infrastructure/why-hybrid-architecture-matters.md)
 
 ---
 
