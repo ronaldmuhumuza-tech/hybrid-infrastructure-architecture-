@@ -1,9 +1,9 @@
-AWS Learning Log – EC2 Fundamentals & Instance Lifecycle
+# AWS Learning Log – EC2 Fundamentals & Instance Lifecycle
 
 Date: 25 February 2026
 Focus: Amazon EC2, Instance States, Billing & AMIs
 
-1. Amazon EC2 (Elastic Compute Cloud) – Core Concepts
+## 1. Amazon EC2 (Elastic Compute Cloud) – Core Concepts
 Amazon EC2 (Elastic Compute Cloud) is AWS’s primary Infrastructure as a Service (IaaS) offering. It provides virtual servers (called instances) running inside a Virtual Private Cloud (VPC).
 
 An EC2 instance includes:
@@ -19,7 +19,7 @@ EC2 is:
 
 If the AZ fails --> the instance fails. Single-instance deployments are not highly available.
 
-2. Instance Sizing & Billing Model
+## 2. Instance Sizing & Billing Model
 EC2 instances come in multiple instance families and sizes, optimised for:
    - General purpose
    - Compute optimised
@@ -44,7 +44,7 @@ Key billing insight:
 
 Only termination guarantees no further charges.
 
-3  EC2 Instance Lifecycle & States
+## 3  EC2 Instance Lifecycle & States
 An EC2 instance moves through defined states:
       -> Pending – Launching
       -> Running – Operational
@@ -64,7 +64,7 @@ Termination:
 Exam relevance:
 Understanding billing implications of instance state transitions is a common exam theme.
 
-4  Amazon Machine Image (AMI)
+## 4  Amazon Machine Image (AMI)
 An Amazon Machine Image (AMI) is a template used to launch EC2 instances.
 It contains:
     -  Boot Volume: Operating system and base software
@@ -82,7 +82,7 @@ AMIs allow:
   - Reproducible infrastructure
 Creating AMIs from configured instances is foundational for scalable architecture.
 
-5  Storage Options – Local vs Elastic
+## 5  Storage Options – Local vs Elastic
 Two storage models:
 Instance Store (Local On-Host Storage)
     - Physically attached to the host machine
@@ -99,7 +99,7 @@ Amazon Elastic Block Store (EBS)
 Important:
 EBS volumes exist independently of instance compute lifecycle.
 
-6  Connecting to EC2 Instances
+## 6  Connecting to EC2 Instances
 Linux Instances
   - Protocol: SSH (Secure Shell), Port: 22
   - Authentication: Key pair (public/private key cryptography)
@@ -119,7 +119,7 @@ Authentication:
 
 Security Groups must allow inbound access on the appropriate port.
 
-7  Practical Lab Completed
+## 7  Practical Lab Completed
 Today I:
   - Launched an EC2 instance
   - Configured Security Groups
