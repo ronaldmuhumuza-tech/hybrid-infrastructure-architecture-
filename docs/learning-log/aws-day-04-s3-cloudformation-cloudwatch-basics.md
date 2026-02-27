@@ -1,4 +1,70 @@
+# AWS Study Notes – S3, CloudFormation & CloudWatch Basics  
+**Date:** February 2026  
+**Study Duration:** ~90 Minutes  
 
+---
+
+# ☁️ Amazon S3 (Simple Storage Service)
+
+## What is S3?
+
+Amazon S3 is a **regional object storage service** designed for high durability, scalability, and availability.
+
+- Regional service
+- Automatically replicated across multiple Availability Zones (AZs)
+- Accessible over the internet (if permissions allow)
+- Private by default
+- Designed for 99.999999999% (11 9’s) durability
+
+---
+
+## Availability Zone (AZ)
+
+An **Availability Zone** is one or more physically separate data centers within a region.
+
+Example:
+- Region: eu-west-2 (London)
+- AZs: eu-west-2a, eu-west-2b, eu-west-2c
+
+S3 automatically replicates objects across multiple AZs inside the same region.
+
+---
+
+## S3 Storage Model – Object Storage
+
+S3 is:
+- ✅ Object storage
+- ❌ Not block storage (EBS)
+- ❌ Not file storage (EFS)
+
+---
+
+## S3 Objects
+
+Each object consists of:
+
+- **Key** – The full object name (acts like a file path)
+- **Value** – The actual data (0 bytes to 5 TB)
+- **Metadata**
+- **Version ID** (if versioning enabled)
+- **Access Control information**
+
+Maximum object size:
+- Single PUT upload: 5GB
+- Multipart upload: 5TB
+
+---
+
+## Flat Namespace
+
+S3 does not have real folders.
+
+Example:
+          photos/2026/jan/image.jpg
+
+This is simply:
+Key = "photos/2026/jan/image.jpg"
+          
 The forward slashes create the appearance of folders, but S3 is a flat storage system.
 
 ---
