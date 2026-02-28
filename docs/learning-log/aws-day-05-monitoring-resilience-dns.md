@@ -240,7 +240,7 @@ Route 53 becomes authoritative for the domain.
 
 DNS is a distributed system of hierarchical delegation.
 ---
-## 🧭 DNS Roles – Key Terminology
+## DNS Roles – Key Terminology
 
 - **Registry**  
   Manages the official database for a Top-Level Domain (TLD).  
@@ -254,7 +254,7 @@ DNS is a distributed system of hierarchical delegation.
   Hosts the actual DNS zone file (Hosted Zone in Route 53) and provides DNS answers for that domain.
   ---
   
-# 🗂 7. Hosted Zones
+# 7. Hosted Zones
 
 A Hosted Zone is a DNS zone file hosted on AWS-managed name servers.
 
