@@ -230,6 +230,17 @@ Route 53 becomes authoritative for the domain.
 
 ---
 
+
+### Explanation
+
+- **IANA** manages the Root Zone of the global DNS system.
+- The Root delegates authority to **TLD registries**.
+- The TLD registry delegates to your domain’s **authoritative name servers**.
+- Those name servers host your actual **DNS records**.
+
+DNS is a distributed system of hierarchical delegation.
+---
+
 # 🗂 7. Hosted Zones
 
 A Hosted Zone is a DNS zone file hosted on AWS-managed name servers.
