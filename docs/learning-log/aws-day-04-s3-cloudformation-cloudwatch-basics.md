@@ -3,7 +3,7 @@
 
 ---
 
-# ☁️ Amazon S3 (Simple Storage Service)
+# Amazon S3 (Simple Storage Service)
 
 ## What is S3?
 
