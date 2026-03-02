@@ -1,6 +1,5 @@
 # AWS Study Notes – S3, CloudFormation & CloudWatch Basics  
-**Date:** February 2026  
-**Study Duration:** ~90 Minutes  
+**Date:** February 2026    
 
 ---
 
@@ -33,9 +32,9 @@ S3 automatically replicates objects across multiple AZs inside the same region.
 ## S3 Storage Model – Object Storage
 
 S3 is:
-- ✅ Object storage
-- ❌ Not block storage (EBS)
-- ❌ Not file storage (EFS)
+- Object storage
+- Not block storage (EBS)
+- Not file storage (EFS)
 
 ---
 
@@ -118,7 +117,7 @@ Anti-patterns:
 
 ---
 
-# 🏗 AWS CloudFormation Basics
+# AWS CloudFormation Basics
 
 ## What is CloudFormation?
 
@@ -204,7 +203,7 @@ CloudFormation automatically manages resource dependencies and rollback on failu
 
 ---
 
-# 📊 AWS CloudWatch Basics
+# AWS CloudWatch Basics
 
 CloudWatch is a platform for operational monitoring and observability.
 
@@ -212,7 +211,7 @@ It consists of three core components:
 
 ---
 
-## 1️⃣ Metrics
+## 1️ Metrics
 
 - CPU utilization
 - Network traffic
@@ -224,7 +223,7 @@ Additional metrics can be collected using the CloudWatch Agent.
 
 ---
 
-## 2️⃣ Logs
+## 2️ Logs
 
 CloudWatch Logs ingests:
 
@@ -240,7 +239,7 @@ Used for:
 
 ---
 
-## 3️⃣ Events (EventBridge)
+## 3️ Events (EventBridge)
 
 CloudWatch Events (now EventBridge) allows:
 
@@ -254,7 +253,7 @@ Example:
 
 ---
 
-# 🔁 Architecture Interaction Model
+# Architecture Interaction Model
 
 High-level interaction between services:
 
