@@ -1,6 +1,21 @@
-# AWS Day 06 – IAM Groups and IAM Roles
-**Date:** 5 March 2026  
+# AWS Day 06.1 – IAM Groups and IAM Roles
+
+**Date:** 5 March 2026
 **Topics:** IAM Groups, IAM Roles, Trust Policies, Permissions Policies
+
+---
+
+# Identity and Access Management (IAM)
+
+**AWS IAM (Identity and Access Management)** is the service used to control access to AWS resources.
+
+It allows administrators to:
+
+* Create identities (users and roles)
+* Assign permissions through policies
+* Control authentication and authorization
+
+IAM is a **global service** and is foundational to AWS security architecture.
 
 ---
 
@@ -8,53 +23,62 @@
 
 ## What is an IAM Group?
 
-An **Identity and Access Management (IAM)** group is a container for IAM users.
+An **IAM Group** is a container for IAM users.
 
-Groups simplify permission management by allowing policies to be applied to multiple users at once.
+Groups simplify permission management by allowing policies to be assigned to multiple users at once.
 
 Key characteristics:
 
-- Groups contain **IAM users**
-- Groups **cannot be logged into**
-- Groups **do not have credentials**
-- Groups exist only for permission management
+* Groups contain **IAM users**
+* Groups **cannot be logged into**
+* Groups **do not have credentials**
+* Groups exist only for permission management
+
+Instead of assigning permissions individually to users, administrators attach policies to groups and then add users to those groups.
 
 ---
 
 # IAM Policy Evaluation
 
-Permissions for a user are determined by merging:
+Permissions for a user are determined by combining:
 
 1. Policies attached directly to the IAM user
 2. Policies attached to IAM groups the user belongs to
 
-AWS evaluates permissions using the following logic:
+AWS evaluates permissions using the following order:
 
-1. Explicit Deny
-2. Allow
-3. Default Deny
+1. **Explicit Deny**
+2. **Allow**
+3. **Implicit (Default) Deny**
 
 Important rule:
 
-**Explicit Deny always overrides Allow**
+> **Explicit Deny always overrides Allow**
+
+If no policy explicitly allows an action, access is denied.
 
 ---
 
 # IAM Groups Example
 
+```text id="gx2kj1"
 IAM User
 │
 ├── Group: Developers
-│ └── Policy: Allow EC2
+│   └── Policy: Allow EC2 (Elastic Compute Cloud)
 │
 └── Group: S3Team
-└── Policy: Allow S3
+    └── Policy: Allow S3 (Simple Storage Service)
+```
 
+Effective permissions for the user:
 
-Effective permissions:
+```text id="ijg2cc"
 Allow EC2
 Allow S3
+```
 
+Permissions from all groups are merged during policy evaluation.
 
 ---
 
@@ -62,71 +86,101 @@ Allow S3
 
 ## What is an IAM Role?
 
-An IAM role is an identity that provides **temporary access permissions**.
+An **IAM Role** is an AWS identity that provides **temporary access permissions**.
 
 Unlike IAM users:
 
-- Roles have **no permanent credentials**
-- Roles are **assumed temporarily**
+* Roles have **no permanent credentials**
+* Roles are **assumed temporarily**
+* Roles are used by **trusted identities**
 
-Roles are used when:
+Roles are commonly used when:
 
-- Many identities require the same permissions
-- Access must be temporary
-- Long-term credentials should not be stored
+* AWS services need permissions
+* Multiple identities require the same permissions
+* Temporary access is preferred over long-term credentials
+
+When a role is assumed, AWS generates **temporary security credentials using AWS STS (Security Token Service).**
 
 ---
 
 # IAM Role Architecture
 
+```text id="fc6l4o"
 Identity
 │
 └── Assume Role
-↓
-IAM Role
-│
-├── Trust Policy (who can assume role)
-└── Permissions Policy (what the role can do)
+        ↓
+    IAM Role
+        │
+        ├── Trust Policy
+        │     (who can assume the role)
+        │
+        └── Permissions Policy
+              (what the role can do)
+```
 
 ---
 
 # Trust Policy
 
-The **trust policy** defines which identities can assume the role.
+The **Trust Policy** defines which identities are allowed to assume the role.
 
-Examples:
+Examples of trusted identities include:
 
-- AWS services (EC2 – Elastic Compute Cloud)
-- IAM users
-- IAM roles
-- External identity providers
+* AWS services (EC2 – Elastic Compute Cloud)
+* IAM users
+* IAM roles
+* External identity providers
+
+Trust policies determine **who is allowed to use the role**.
 
 ---
 
 # Permissions Policy
 
-Defines what the role can do after it is assumed.
+The **Permissions Policy** defines what actions the role can perform once it has been assumed.
 
 Example permissions:
 
-- Access S3 (Simple Storage Service)
-- Launch EC2 instances
-- Write logs to CloudWatch
+* Access S3 (Simple Storage Service)
+* Launch EC2 instances
+* Write logs to CloudWatch (Amazon CloudWatch)
+
+Permissions policies determine **what the role is allowed to do**.
+
+---
+
+# Role Assumption Flow
+
+```text id="z1z6t3"
+User / Service
+      │
+      └── Assume Role
+              ↓
+        AWS STS
+        (Security Token Service)
+              ↓
+      Temporary Security Credentials
+              ↓
+        Access AWS Resources
+```
 
 ---
 
 # Architectural Takeaways
 
-- Groups simplify permission management
-- Roles enable temporary secure access
-- Trust policies control *who can assume*
-- Permissions policies control *what can be done*
+* IAM Groups simplify permission management for multiple users
+* IAM Roles provide **temporary access** without long-term credentials
+* Trust Policies define **who can assume a role**
+* Permissions Policies define **what actions the role can perform**
+* Temporary credentials generated through **AWS STS improve security**
 
 ---
 
-## References
+# References
 
-Concepts in this study note were reinforced through:
+Concepts reinforced through:
 
-- AWS Documentation
-- Adrian Cantrill – AWS Solutions Architect Associate Course
+* AWS Documentation
+* Adrian Cantrill – AWS Solutions Architect Associate Course
