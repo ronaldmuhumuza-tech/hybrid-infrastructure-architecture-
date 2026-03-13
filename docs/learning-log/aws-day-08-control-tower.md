@@ -1,7 +1,6 @@
 # AWS Day 07.3 – AWS Control Tower and Multi-Account Governance
 
-**Date:**  
-**Course:** AWS Solutions Architect Associate  
+**Date:*13/03/2025*  
 **Topic:** AWS Control Tower, Landing Zones, Guardrails, Account Factory
 
 ---
